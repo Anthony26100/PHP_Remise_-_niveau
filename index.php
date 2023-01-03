@@ -13,6 +13,10 @@ $search_pages = filter_input(INPUT_GET, 'page', FILTER_DEFAULT);
     {
         include 'pages/header.php';
     }
+    elseif ($search_pages == 'contact')
+    {
+        include 'pages/contact.php';
+    }
     else
     {
         include 'pages/error404.php';
