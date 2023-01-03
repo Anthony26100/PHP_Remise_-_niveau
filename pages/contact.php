@@ -3,16 +3,13 @@
     <select id="title" name="civilite">
         <option value="Mr">M.</option>
         <option value="Mrs">Mme</option>
-    </select>
-    <br>
-    <label for="firstname">Prénom:</label>
-    <br>
+    </select><br>
+
+    <label for="firstname">Prénom:</label><br>
     <input type="text" id="firstname" name="firstname">
 
-    <label for="lastname">Nom:</label>
-    <br>
-    <input type="text" id="lastname" name="lastname">
-    <br>
+    <label for="lastname">Nom:</label><br>
+    <input type="text" id="lastname" name="lastname"><br>
 
     <label for="email">Email:</label>
     <br>
@@ -41,7 +38,6 @@ $submit = filter_input(INPUT_POST, 'submit', FILTER_DEFAULT);
 
 if($submit)
 {
-
     $civilite = filter_input(INPUT_POST, 'civilite', FILTER_DEFAULT);
     $nom = filter_input(INPUT_POST, 'firstname', FILTER_DEFAULT);
     $prenom = filter_input(INPUT_POST, 'lastname', FILTER_DEFAULT);
