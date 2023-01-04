@@ -1,5 +1,8 @@
 <?php
+session_start();
+var_dump($_SESSION);
 var_dump($_POST);
+
 $submit = filter_input(INPUT_POST, 'submit', FILTER_DEFAULT);
 
 $civilite = filter_input(INPUT_POST, 'civilite', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -8,6 +11,13 @@ $prenom = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_FULL_SPECIAL_CHAR
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $contact = filter_input(INPUT_POST, 'contact', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+$_SESSION['civilite'] = $civilite;
+$_SESSION['nom'] = $nom;
+$_SESSION['prenom'] = $prenom;
+$_SESSION['email'] = $email;
+$_SESSION['contact'] = $contact;
+$_SESSION['message'] = $message;
 
 if($submit)
 {
@@ -70,20 +80,20 @@ if($submit)
     } ?>
     <label for="firstname">Prénom:</label>
     <br>
-    <input type="text" id="firstname" name="firstname">
+    <input type="text" id="firstname" name="firstname" value="<?php echo $_SESSION['prenom']  ?>">
 
 
     <br>
     <label for="lastname">Nom:</label>
     <br>
-    <input type="text" id="lastname" name="lastname"><br>
+    <input type="text" id="lastname" name="lastname" value="<?php echo $_SESSION['nom']?>" ><br>
     <?php if($errorlastname) {
         echo $errorlastname;
     } ?>
     <br>
     <label for="email">Email:</label>
     <br>
-    <input type="email" id="email" name="email">
+    <input type="email" id="email" name="email" value="<?php echo $_SESSION['email']?>">
     <br>
     <?php if($erroremail) {
         echo $erroremail."<br>";
